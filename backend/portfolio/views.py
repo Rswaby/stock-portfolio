@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import *
 # Create your views here.
+from django.shortcuts import get_object_or_404
 from .serializers import *
 from rest_framework import viewsets,response
 
@@ -11,14 +12,14 @@ class UserViewSet(viewsets.ViewSet):
         serializer = StockUserSerializer(queryset, many=True)
         return response.Response(serializer.data)
 
-    
 
 
 class TransactionsViewSet(viewsets.ViewSet):
-    def retrieve(self,request):
-        #get the user first
-        #Article.objects.filter(user=user)
-
-        username = self.kwargs['username']
+    def retrieve(self,request,username=None):
+        queryset = StockUser.objects.all()
+        user = get_object_or_404(queryset, userID=username)
+        queryset2 = Transactions.objects.filter(user=user)
+        serializer = TransactionsSerializer(queryset2, many=True)
         
-        return response.Response(username)
+        
+        return response.Response(serializer.data)

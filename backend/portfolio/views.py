@@ -4,6 +4,7 @@ from .models import *
 from django.shortcuts import get_object_or_404
 from .serializers import *
 from rest_framework import viewsets,response, status
+from .utils import server_socket
 
 class UserViewSet(viewsets.ViewSet):
 
@@ -81,4 +82,10 @@ class StockViewSet(viewsets.ViewSet):
         subset = get_object_or_404(symbol=symbol)
         serializer = StockSerializer(subset)
         return response.Response(serializer.data,status.HTTP_200_OK)
+        
+class LiveStocksViewSet(viewsets.ViewSet):
+    def live_update(self,request):
+        
+        server_socket.test()
+
         pass

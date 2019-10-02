@@ -15,8 +15,11 @@ class UserViewSet(viewsets.ViewSet):
 
 
 class TransactionsViewSet(viewsets.ViewSet):
-    def retrieve(self,request,pk=None):
+    def retrieve(self,request,username=None):
         queryset = StockUser.objects.all()
-        user = get_object_or_404(queryset, pk=pk)
+        user = get_object_or_404(queryset, userID=username)
+        queryset2 = Transactions.objects.filter(user=user)
+        serializer = TransactionsSerializer(queryset2, many=True)
         
-        return response.Response(user)
+        
+        return response.Response(serializer.data)

@@ -30,6 +30,3 @@ class Transactions(models.Model):
     time = models.DateTimeField(blank = True, null = True)
 
 
-    def __str__(self):
-        return self.user
-

@@ -47,7 +47,7 @@ class TransactionsViewSet(viewsets.ViewSet):
         serializer = TransactionsSerializer(queryset2, many=True)
         
         
-        return response.Response(serializer.data)
+        return response.Response(serializer.data,status.HTTP_200_OK)
     
     def create(self, request):
         serializer = TransactionsSerializer(data=request.data)
@@ -61,7 +61,7 @@ class TransactionsViewSet(viewsets.ViewSet):
 
     def destroy(self, request, pk=None):
         pass
-    
+
 class StockViewSet(viewsets.ViewSet):
     def create(self, request):
         serializer = StockSerializer(data=request.data)
@@ -70,3 +70,15 @@ class StockViewSet(viewsets.ViewSet):
             return response.Response(serializer.data,status=status.HTTP_201_CREATED)
         else:
             return response.Response(status=status.HTTP_400_BAD_REQUEST)
+    
+    def list(self, request):
+        query_set = Stock.objects.all()
+        serializer = StockSerializer(query_set,many=True)
+        return response.Response(serializer.data,status.HTTP_200_OK)
+    
+    def retrieve(self, request, symbol=None):
+        query_set = Stock.objects.all()
+        subset = get_object_or_404(symbol=symbol)
+        serializer = StockSerializer(subset)
+        return response.Response(serializer.data,status.HTTP_200_OK)
+        pass

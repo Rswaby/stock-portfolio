@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 from .serializers import *
 from rest_framework import viewsets,response, status
 from .utils import server_socket
-
+from alpha_vantage.timeseries import TimeSeries
 class UserViewSet(viewsets.ViewSet):
 
     def list_users(self, request):
@@ -64,6 +64,7 @@ class TransactionsViewSet(viewsets.ViewSet):
         pass
 
 class StockViewSet(viewsets.ViewSet):
+
     def create(self, request):
         serializer = StockSerializer(data=request.data)
         if serializer.is_valid():
@@ -77,6 +78,20 @@ class StockViewSet(viewsets.ViewSet):
         serializer = StockSerializer(query_set,many=True)
         return response.Response(serializer.data,status.HTTP_200_OK)
     
+    def user_stock(self, request, username=None):
+        query_set = Transactions.objects.all()
+        #find a way to get all stocks for x user
+        pass
+
+    def update(self,request):
+        query_set = Stock.objects.all()
+        #ts = TimeSeries(key='1CUKM2S9MK37DA21', output_format='json')
+        #data, meta_data = ts.get_intraday(symbol='MSFT',interval='1min', outputsize='full')
+        # last_refreshed = meta_data['3. Last Refreshed']
+        # data[last_refreshes] to get most recent data value
+        #print(meta_data)
+        #go through all the stocks and update there values
+    
     def retrieve(self, request, symbol=None):
         query_set = Stock.objects.all()
         subset = get_object_or_404(symbol=symbol)
@@ -84,8 +99,15 @@ class StockViewSet(viewsets.ViewSet):
         return response.Response(serializer.data,status.HTTP_200_OK)
         
 class LiveStocksViewSet(viewsets.ViewSet):
-    def live_update(self,request):
-        
-        server_socket.test()
 
+    def live_update(self,request):
         pass
+
+    def retrieve(self, request, symbol=None):
+        #search_symbol
+        ts = TimeSeries(key='1CUKM2S9MK37DA21', output_format='json')
+        data, meta_data = ts.get_symbol_search(symbol)
+        return response.Response(data)
+    
+    # def update_stock_information(self,request):
+

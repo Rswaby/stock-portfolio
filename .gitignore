@@ -80,10 +80,12 @@ celerybeat-schedule
 
 # SageMath parsed files
 *.sage.py
+frontend/node_modules/
 
 # dotenv
-backend/*.env/
 
+backend/*.env/
+frontend/*.env/
 # virtualenv
 .venv
 venv/

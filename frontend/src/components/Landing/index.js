@@ -13,7 +13,7 @@ class Search extends Component {
   }
 //http://localhost:8000/api/live/MSFT
   fetchInfo = () => {
-    axios.get(`http://localhost:8000/api/live/${this.state.keyword}`)
+    axios.get(`/api/live/${this.state.keyword}`)
       .then(({ data }) => {
         this.setState({
           data: data.data
@@ -21,7 +21,7 @@ class Search extends Component {
           
           if(this.state.keyword && this.state.keyword.length>2){
           
-            //this.fetchInfo() 
+            this.fetchInfo() 
           }
         })
       })

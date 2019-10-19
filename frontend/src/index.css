@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 body {
   margin: 0;
@@ -29,6 +29,9 @@ code {
 }
 .m-left-5{
   margin-left: 5px;
+}
+.m-bottom-5{
+  margin-bottom: 5;
 }
 .centr{
   text-align: center;
@@ -172,6 +175,37 @@ code {
 }
 .container .info span .fa {
   color: #EF3B3A;
+}
+
+
+.search {
+  
+  width: 100%;
+  position: relative;
+  text-align: center;
+  /* display: flex; */
+}
+
+.searchTerm {
+  width: 50%;
+  border: 2px solid #00B4CC;
+  padding: 5px;
+  height: 40px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: black;
+}
+
+
+
+.searchPage{
+  display: grid;
+  grid-row: 3;
+  grid-template-rows: 25% 25% 25%
 }
 
 

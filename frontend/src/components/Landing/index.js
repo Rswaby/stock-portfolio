@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import StockCard from "../StockCard";
+import StockCard from "../StockCard/index";
 const Landing = () => (<Search />);
 
 class Search extends Component {

@@ -2,7 +2,7 @@ import React from 'react';
 
 const StockCard = ({data}) => (
     <div className={"card"}>
-        <p>{console.log()}</p>
+        <div className={"content"}>{data["1. symbol"]}</div>
     </div>
 )
 

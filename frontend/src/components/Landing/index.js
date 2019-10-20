@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import StockCard from "../StockCard";
 const Landing = () => (<Search />);
 
 class Search extends Component {
@@ -46,8 +47,7 @@ class Search extends Component {
             onChange={this.handleInputChange}
           />
         </form>
-        {/* {this.state.loaded ? <p>{this.state.data}</p> : null} */}
-        <p>Cards go here</p>
+        <StockCard ticker={this.state.data}/>
       </div>
     )
   }

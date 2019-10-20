@@ -12,7 +12,7 @@ class StockPage extends Component {
         return (
             <div className={"stock-detail-wrapper"}>
                 <div className={"stock-title"}>Stock-title-page</div>
-                <div className={"stock-details-section"}>
+                <div className={"stock-details-section m-left-5"}>
                     <div className={"stock-info-section"}>Stock-detail</div>
                     <div className={"stock-purchase-or-login"}> Login or purchase Stock section</div>
                 </div>

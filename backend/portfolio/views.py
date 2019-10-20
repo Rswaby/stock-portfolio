@@ -108,6 +108,17 @@ class LiveStocksViewSet(viewsets.ViewSet):
         ts = TimeSeries(key='1CUKM2S9MK37DA21', output_format='json')
         data, meta_data = ts.get_symbol_search(symbol)
         return response.Response(data)
-    
+
+    def retrieve_symbol_details(self, request, symbol=None):
+        ts = TimeSeries(key='1CUKM2S9MK37DA21', output_format='json')
+        data, meta_data = ts.get_intraday(symbol=symbol)
+        last_refreshed = meta_data['3. Last Refreshed']
+        data = data[last_refreshed]
+        result = {}
+        result['data'] = data
+        result['meta_data'] = meta_data
+
+        return response.Response(result)
+
     # def update_stock_information(self,request):
 

@@ -7,6 +7,7 @@ class Search extends Component {
   state = {
     keyword: '',
     loaded: false,
+    isloading: false,
     data: []
   }
 
@@ -16,6 +17,7 @@ class Search extends Component {
         const data = res.data
         this.setState({
           loaded: true,
+          isloading: false,
           data: data
         })
       })
@@ -29,6 +31,9 @@ class Search extends Component {
   }
 
   handleOnSubmit = (event) => {
+    this.setState({
+      isloading: true
+    })
     console.log(this.state.keyword)
     this.fetchInfo()
     event.preventDefault()
@@ -36,6 +41,11 @@ class Search extends Component {
 
   render() {
     console.log(this.state)
+    const {isloading,loaded,data} = this.state;
+    const renderCards =() => (
+      loaded && data.map((ticker, index) =>
+      <StockCard key={index} data={ticker} />)
+    )
     return (
       <div className={"searchPage m-top-5"}>
         <h4 className={"centr m-top-50"}>Browse Stocks</h4>
@@ -48,10 +58,7 @@ class Search extends Component {
           />
         </form>
         <div className={"card-result-area"}>
-          {this.state.loaded &&
-            this.state.data.map((ticker, index) =>
-              <StockCard key={index} data={ticker} />
-            )}
+          {isloading? <div className={"lds-circle centr"}><div></div></div> : renderCards()}
         </div>
       </div>
     )

@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 
 const StockCard = ({ data }) => (
     <div className={"card"}>
-        <Link to={`/stock/${data["1. symbol"]}`}>
+        <Link
+            onClick={() => {localStorage.setItem(data["1. symbol"], data["2. name"])}}
+            to={`/stock/${data["1. symbol"]}`}>
             <div className={"content"}>
                 <h6> {data["1. symbol"]}</h6>
                 <p>{data["2. name"]}</p>

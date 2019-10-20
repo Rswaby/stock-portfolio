@@ -4,17 +4,30 @@ import React, { Component } from 'react';
 
 
 class StockPage extends Component {
-
+    state = {
+        symbol: ''
+    }
     componentWillMount() {
+        const { symbol } = this.props.match.params;
+        this.setState({
+            symbol: symbol
+        })
         console.log(this.props)
     }
+
+
     render() {
+        const { symbol } = this.state;
         return (
             <div className={"stock-detail-wrapper"}>
-                <div className={"stock-title"}>Stock-title-page</div>
+                <div className={"stock-title"}>{localStorage.getItem(symbol)}</div>
                 <div className={"stock-details-section m-left-5"}>
-                    <div className={"stock-info-section"}>Stock-detail</div>
-                    <div className={"stock-purchase-or-login"}> Login or purchase Stock section</div>
+                    <div className={"stock-info-section"}>
+                        Stock-detail
+                    </div>
+                    <div className={"stock-purchase-or-login"}>
+                        Login or purchase Stock section
+                    </div>
                 </div>
             </div>
         )

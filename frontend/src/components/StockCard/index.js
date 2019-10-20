@@ -1,23 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const StockCard = ({data}) => (
-    <div className={"card"}>
-        <div className={"content"}>{data["1. symbol"]}</div>
-    </div>
+const StockCard = ({ data }) => (
+    <Link to={'#'}>
+        <div className={"card"}>
+
+            <div className={"content"}>
+                <h6> {data["1. symbol"]}</h6>
+                <p>{data["2. name"]}</p>
+                <br />
+                <p>Market Open | {data["5. marketOpen"]} </p>
+                <p>Market Close | {data["6. marketClose"]}</p>
+                <p>Currency | {data["8. currency"]} </p>
+            </div>
+
+        </div>
+    </Link>
 )
 
 export default StockCard;
-
-// {
-//     "ticker": {
-//       "1. symbol": "MSFT",
-//       "2. name": "Microsoft Corporation",
-//       "3. type": "Equity",
-//       "4. region": "United States",
-//       "5. marketOpen": "09:30",
-//       "6. marketClose": "16:00",
-//       "7. timezone": "UTC-04",
-//       "8. currency": "USD",
-//       "9. matchScore": "1.0000"
-//     }
-//   }

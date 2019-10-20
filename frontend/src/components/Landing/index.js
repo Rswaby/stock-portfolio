@@ -38,7 +38,7 @@ class Search extends Component {
     console.log(this.state)
     return (
       <div className={"searchPage m-top-5"}>
-        <h4 className={"centr"}>Browse Stocks</h4>
+        <h4 className={"centr m-top-50"}>Browse Stocks</h4>
         <form className={"search"} onSubmit={this.handleOnSubmit}>
           <input
             className={"searchTerm"}

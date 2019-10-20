@@ -23,7 +23,9 @@ code {
 .m-top-5 {
   margin-top: 15px;
 }
-
+.m-top-50{
+  margin-top: 50px;
+}
 .m-left-5 {
   margin-left: 5px;
 }
@@ -197,6 +199,7 @@ code {
   width: 100%;
   position: relative;
   text-align: center;
+  /* padding-top: 50px; */
   /* display: flex; */
 }
 
@@ -236,6 +239,7 @@ code {
 
 .content{
   padding: 2px 16px;
+  text-align: center;
 }
 
 .searchPage {

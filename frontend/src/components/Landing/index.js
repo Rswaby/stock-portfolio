@@ -47,7 +47,12 @@ class Search extends Component {
             onChange={this.handleInputChange}
           />
         </form>
-        <StockCard ticker={this.state.data}/>
+        <div className={"card-result-area"}>
+          {this.state.loaded &&
+            this.state.data.map((ticker, index) =>
+              <StockCard key={index} data={ticker} />
+            )}
+        </div>
       </div>
     )
   }

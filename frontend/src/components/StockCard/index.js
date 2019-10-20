@@ -1,9 +1,23 @@
 import React from 'react';
 
-const StockCard = (ticker) => (
-    <div>
-        <p>StockCard</p>
+const StockCard = ({data}) => (
+    <div className={"card"}>
+        <p>{console.log()}</p>
     </div>
 )
 
 export default StockCard;
+
+// {
+//     "ticker": {
+//       "1. symbol": "MSFT",
+//       "2. name": "Microsoft Corporation",
+//       "3. type": "Equity",
+//       "4. region": "United States",
+//       "5. marketOpen": "09:30",
+//       "6. marketClose": "16:00",
+//       "7. timezone": "UTC-04",
+//       "8. currency": "USD",
+//       "9. matchScore": "1.0000"
+//     }
+//   }

@@ -2,3 +2,4 @@ django
 djangorestframework
 celery==3.1.18
 redis==2.10.3
+alpha-vantage

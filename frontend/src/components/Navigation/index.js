@@ -30,7 +30,10 @@ const NavigationAuth = ({ authUser }) => (
       <Link style={style.link} to={ROUTES.HOME}>HOME</Link>
     </div>
     <div id={"nav-bar-item"}>
-      <Link style={style.link} to={ROUTES.ACCOUNT}>ACCOUNT</Link>
+      <Link style={style.link} to={ROUTES.LANDING}>BROWSE</Link>
+    </div>
+    <div id={"nav-bar-item"}>
+      <Link style={style.link} to={ROUTES.ACCOUNT}>PORTFOLIO</Link>
     </div>
     {!!authUser.roles[ROLES.ADMIN] && (
       <div id={"nav-bar-item"}>

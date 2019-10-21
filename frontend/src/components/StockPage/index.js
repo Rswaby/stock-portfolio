@@ -2,13 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { AuthUserContext } from '../Session';
 import { Link } from 'react-router-dom';
-const style = {
-    link: {
-      "textDecoration": "none",
-      "color": "black",
-      "textAlign": "center",
-    }
-  }
+
 
 class StockPage extends Component {
     state = {
@@ -71,7 +65,7 @@ class StockPage extends Component {
                                 authUser ? (
                                     <div>purchase stock</div>
                                 ) : (
-                                    <Link  to={"/signin"}>SIGN IN</Link>
+                                    <Link  to={"/signin"}>SIGN IN TO BUY SHARES</Link>
                                 )
 
                             }

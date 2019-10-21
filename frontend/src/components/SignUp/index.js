@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-
+import axios from 'axios';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
@@ -22,6 +22,7 @@ const INITIAL_STATE = {
   passwordTwo: '',
   isAdmin: false,
   error: null,
+  uid: ''
 };
 
 const ERROR_CODE_ACCOUNT_EXISTS = 'auth/email-already-in-use';
@@ -54,7 +55,8 @@ class SignUpFormBase extends Component {
       .then(authUser => {
         // Create a user in your Firebase realtime database
         //also create user in local db
-        console.log("AUTHUSER: ",authUser)
+        console.log("AUTHUSER: ", authUser)
+        this.createStockUser(authUser.user.uid,email);
         return this.props.firebase.user(authUser.user.uid).set({
           username,
           email,
@@ -76,8 +78,21 @@ class SignUpFormBase extends Component {
         this.setState({ error });
       });
 
+
+
     event.preventDefault();
   };
+
+  createStockUser = (id, userName) => {
+
+    axios.post('/api/users/create/', {
+      "userID": id,
+      "userName": userName,
+      "bank": 50000
+    }).then((res) => {
+      console.log(res)
+    }, (error) => { console.log(error) })
+  }
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });

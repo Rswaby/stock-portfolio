@@ -8,6 +8,7 @@ class StockPage extends Component {
     state = {
         symbol: '',
         loaded: '',
+        shares: 0,
         data: {}
     }
     componentWillMount() {
@@ -24,6 +25,10 @@ class StockPage extends Component {
     }
 
     handlePurchase = () => {
+
+    }
+
+    onChange = event =>{
 
     }
 
@@ -65,8 +70,8 @@ class StockPage extends Component {
                                 authUser ? (
                                     <div>purchase stock</div>
                                 ) : (
-                                    <Link  to={"/signin"}>SIGN IN TO BUY SHARES</Link>
-                                )
+                                        <Link to={"/signin"}>SIGN IN TO BUY SHARES</Link>
+                                    )
 
                             }
                         </AuthUserContext.Consumer>

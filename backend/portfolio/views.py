@@ -24,7 +24,13 @@ class UserViewSet(viewsets.ViewSet):
             return response.Response(status=status.HTTP_400_BAD_REQUEST)
 
     def retrieve(self, request, pk=None):
-        pass
+        query_set = StockUser.objects.all()
+        user = get_object_or_404(query_set, userID=pk)
+        serializer = StockUserSerializer(user,many=False)
+        print(serializer)
+
+        return response.Response(serializer.data)
+        
 
     def update(self, request, pk=None):
         pass

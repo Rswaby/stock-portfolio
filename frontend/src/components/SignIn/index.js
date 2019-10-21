@@ -12,9 +12,6 @@ const SignInPage = () => (
     <div className={"form"}>
       <h1>SignIn</h1>
       <SignInForm />
-      {/* <SignInGoogle /> */}
-      {/* <SignInFacebook /> */}
-      {/* <SignInTwitter /> */}
       <PasswordForgetLink />
       <SignUpLink />
     </div>
@@ -50,6 +47,7 @@ class SignInFormBase extends Component {
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
+        // console.log("signing in ")
         this.setState({ ...INITIAL_STATE });
         this.props.history.push(ROUTES.HOME);
       })
@@ -57,6 +55,7 @@ class SignInFormBase extends Component {
         this.setState({ error });
       });
 
+    console.log(localStorage.getItem('authUser'), email)
     event.preventDefault();
   };
 

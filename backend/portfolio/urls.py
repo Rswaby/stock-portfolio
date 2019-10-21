@@ -4,8 +4,9 @@ from .views import *
 
 
 urlpatterns = [
-    path('users/',UserViewSet.as_view({'post': 'create'}),name="create_user"),
     path('users/',UserViewSet.as_view({'get': 'list_users'}),name="users_all"),
+    path('users/<pk>',UserViewSet.as_view({'get': 'retrieve'}),name="users_by_pk"),
+    path('users/create/',UserViewSet.as_view({'post': 'create'}),name="create_user"),
     path('transactions/',TransactionsViewSet.as_view({'post':'create'}), name="create_trans"),
     path('transactions/<username>',TransactionsViewSet.as_view({'get':'retrieve'}),name="user_trans"),
     path('stock/',StockViewSet.as_view({'post':'create'}), name="register_stock"),

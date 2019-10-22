@@ -24,7 +24,13 @@ class UserViewSet(viewsets.ViewSet):
             return response.Response(status=status.HTTP_400_BAD_REQUEST)
 
     def retrieve(self, request, pk=None):
-        pass
+        query_set = StockUser.objects.all()
+        user = get_object_or_404(query_set, userID=pk)
+        serializer = StockUserSerializer(user,many=False)
+        print(serializer)
+
+        return response.Response(serializer.data)
+        
 
     def update(self, request, pk=None):
         pass
@@ -52,9 +58,20 @@ class TransactionsViewSet(viewsets.ViewSet):
     
     def create(self, request):
         serializer = TransactionsSerializer(data=request.data)
+        #update-user-rohan
+        userEntry = StockUser.objects.get(userID=request.data.get('user'))
+        remainder = userEntry.bank - request.data.get('amount_payed')
+        userEntry.bank = remainder
+        
+
         if serializer.is_valid():
+            returnval = dict()
+            
+            userEntry.save()
             serializer.save()
-            return response.Response(serializer.data,status=status.HTTP_201_CREATED)
+            returnval['moneyLeft'] = remainder
+            returnval['transaction'] = serializer.data
+            return response.Response(returnval,status=status.HTTP_201_CREATED)
         else:
             return response.Response(status=status.HTTP_400_BAD_REQUEST)
 
@@ -108,6 +125,17 @@ class LiveStocksViewSet(viewsets.ViewSet):
         ts = TimeSeries(key='1CUKM2S9MK37DA21', output_format='json')
         data, meta_data = ts.get_symbol_search(symbol)
         return response.Response(data)
-    
+
+    def retrieve_symbol_details(self, request, symbol=None):
+        ts = TimeSeries(key='1CUKM2S9MK37DA21', output_format='json')
+        data, meta_data = ts.get_intraday(symbol=symbol)
+        last_refreshed = meta_data['3. Last Refreshed']
+        data = data[last_refreshed]
+        result = {}
+        result['data'] = data
+        result['meta_data'] = meta_data
+
+        return response.Response(result)
+
     # def update_stock_information(self,request):
 

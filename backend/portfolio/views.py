@@ -61,14 +61,16 @@ class TransactionsViewSet(viewsets.ViewSet):
         #update-user-rohan
         userEntry = StockUser.objects.get(userID=request.data.get('user'))
         remainder = userEntry.bank - request.data.get('amount_payed')
-        userEntry['bank']  = remainder
-        returnval = dict()
-        returnval['moneyLeft'] = remainder
-        returnval['transaction'] = serializer.data
-        userEntry.save()
+        userEntry.bank = remainder
+        
 
         if serializer.is_valid():
+            returnval = dict()
+            
+            userEntry.save()
             serializer.save()
+            returnval['moneyLeft'] = remainder
+            returnval['transaction'] = serializer.data
             return response.Response(returnval,status=status.HTTP_201_CREATED)
         else:
             return response.Response(status=status.HTTP_400_BAD_REQUEST)

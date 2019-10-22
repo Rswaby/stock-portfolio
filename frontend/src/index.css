@@ -235,6 +235,7 @@ code {
 .porfolio-detials{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 2fr)) ;
+  grid-auto-columns: minmax(100px, auto)  ;
 }
 .card {
   border: 1px solid #d3d3d3;

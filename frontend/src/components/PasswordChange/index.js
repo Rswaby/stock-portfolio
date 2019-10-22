@@ -42,7 +42,7 @@ class PasswordChangeForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit} className={"m-top-5"}>
-        <div className={"centr"}>
+        <div className={""}>
           <input
             name="passwordOne"
             value={passwordOne}

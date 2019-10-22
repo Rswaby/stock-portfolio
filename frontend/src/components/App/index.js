@@ -10,7 +10,6 @@ import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
 import StockPage from '../StockPage';
-
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 

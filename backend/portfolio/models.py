@@ -27,6 +27,6 @@ class Transactions(models.Model):
     stock = models.ForeignKey(Stock, on_delete=models.CASCADE, null=True)
     shares = models.IntegerField(null=True)
     amount_payed = models.FloatField(null=True)
-    time = models.DateTimeField(blank = True, null = True)
+    time =  models.DateTimeField(auto_now_add= True,null=True, blank=True)
 
 

@@ -228,7 +228,14 @@ code {
   grid-auto-rows: minmax(100px, auto);
   padding: 50px;
 }
-
+.porfolio-area{
+  display: grid;
+  grid-template-rows: repeat(auto-fit, minmax(100px, 4fr));
+}
+.porfolio-detials{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 2fr)) ;
+}
 .card {
   border: 1px solid #d3d3d3;
   border-radius: 1rem;

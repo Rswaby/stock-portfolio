@@ -49,8 +49,8 @@ class Porfolio extends Component {
                     {transInfoLoaded ? transData.map((transac) =>
                         <div className="trans-card">
                             <h5>{transac.stock}</h5>
-                            <span>shares owned: {transac.shares}</span>
-                            <span>${transac.amount_payed}</span>
+                            <p>shares owned: {transac.shares}</p>
+                            <p>Total Price: ${transac.amount_payed}</p>
                         </div>
                     ) :
                         (

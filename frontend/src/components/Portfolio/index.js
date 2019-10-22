@@ -41,14 +41,26 @@ class Porfolio extends Component {
 
     render() {
         console.log(this.state.transData)
-        const { transInfoLoaded } = this.state
+        const { transInfoLoaded, transData } = this.state
         return (
             <div className="porfolio-detials">
-                <div>
-                    Transaction History
-                    {transInfoLoaded? null:  <div className={"lds-circle centr"}><div></div></div>}
+                <div className="porfolio-rows">
+                    <h5 className="centr m-top-5">Transaction History</h5>
+                    {transInfoLoaded ? transData.map((transac) =>
+                        <div className="trans-card">
+                            <h5>{transac.stock}</h5>
+                            <span>shares owned: {transac.shares}</span>
+                            <span>${transac.amount_payed}</span>
+                        </div>
+                    ) :
+                        (
+                            <div className={"lds-circle centr"}><div></div></div>
+                        )
+                    }
                 </div>
-                <div>Porfolio</div>
+                <div>
+                    <h5 className="centr m-top-5">Porfolio</h5>
+                </div>
             </div>
         )
     }

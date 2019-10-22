@@ -3,7 +3,7 @@ import axios from 'axios';
 import { AuthUserContext } from '../Session';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
-
+// import sleep from 'sleep';
 class StockPage extends Component {
     state = {
         symbol: '',
@@ -51,6 +51,7 @@ class StockPage extends Component {
 
         this.props.history.push(ROUTES.ACCOUNT);
 
+        // sleep(1000);
         event.preventDefault();
 
     }
@@ -112,10 +113,10 @@ class StockPage extends Component {
         const { symbol, data, shares, costPershar } = this.state;
         console.log(shares)
         return (
-            <div className={"m-top-50"}>
+            <div className={"m-50 trans-card"}>
                 <h5 className={"stock-title"}>{localStorage.getItem(symbol)}</h5>
                 <div className={"stock-details-section m-left-5"}>
-                    <div className={"stock-info-section"}>
+                    <div className={"stock-info-section "}>
                         <h6 className="centr"> Symbol : {symbol}</h6>
                         <br />
                         {data.data && (<div className="centr">

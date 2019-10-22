@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
-
+import Porfolio from '../Portfolio';
 import {
   AuthUserContext,
   withAuthorization,
@@ -35,10 +35,11 @@ const SIGN_IN_METHODS = [
 const AccountPage = () => (
   <AuthUserContext.Consumer>
     {authUser => (
-      <div className={"col-md-12"}>
-        <PasswordForgetForm />
+      <div className={"porfolio-area"}>
+        <Porfolio/>
+        <PasswordForgetForm />  
         <PasswordChangeForm />
-        <LoginManagement authUser={authUser} />
+        {/* <LoginManagement authUser={authUser} /> */}
       </div>
     )}
   </AuthUserContext.Consumer>

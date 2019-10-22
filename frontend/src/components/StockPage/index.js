@@ -86,7 +86,7 @@ class StockPage extends Component {
             "time": time,
         }).then((res) => {
             console.log(res.data)
-            localStorage.setItem('bank',res.data['moneyLeft'])
+            localStorage.setItem('bank', res.data['moneyLeft'])
         }, (error) => { console.log(error) })
     }
     onChange = event => {

@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: ghostwhite;
-  /* background-image: url('http://i.stack.imgur.com/GySvQ.png') */
+  background-image: url('../src/cool-background.png');
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -235,7 +235,7 @@ code {
 .porfolio-detials{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 2fr)) ;
-  grid-auto-columns: minmax(100px, auto)  ;
+  grid-auto-columns: minmax(100px, auto);
 }
 .card {
   border: 1px solid #d3d3d3;

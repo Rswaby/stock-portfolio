@@ -40,7 +40,7 @@ const NavigationAuth = ({ authUser }) => (
         <Link style={style.link} to={ROUTES.ADMIN}>ADMIN</Link>
       </div>
     )}
-    <div id={"nav-bar-item"}>
+    <div id={"nav-bar-item"} onClick={()=>{localStorage.setItem('bank','')}}>
       <SignOutButton />
     </div>
   </div>

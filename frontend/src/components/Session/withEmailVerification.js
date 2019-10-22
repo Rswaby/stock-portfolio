@@ -40,7 +40,7 @@ const withEmailVerification = Component => {
                     Refresh this page once you confirmed your E-Mail.
                   </p>
                 ) : (
-                    <p>
+                    <p style={{"color":"red"}}>
                       Verify your E-Mail: Check your E-Mails (Spam folder
                       included) for a confirmation E-Mail or send
                       another confirmation E-Mail.
@@ -48,6 +48,7 @@ const withEmailVerification = Component => {
                   )}
 
                 <button
+                  className={"btn centr btn-default m-left-5 todo-btn"}
                   type="button"
                   onClick={this.onSendEmailVerification}
                   disabled={this.state.isSent}

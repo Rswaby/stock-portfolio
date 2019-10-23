@@ -12,6 +12,7 @@ matrix:
         - ./manage.py makemigrations && ./manage.py migrate
       script:
         - python manage.py test
+        - python manage.py runserver
 
     - language: node_js
       node_js:
@@ -21,6 +22,7 @@ matrix:
         - rm -rf node_modules && rm -f package-lock.json
         - npm install
       script:
+        - npm test
         - CI=false && npm run build
       deploy:
         provider: heroku

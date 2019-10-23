@@ -1,0 +1,3 @@
+
+release: ./post_release.sh
+web: gunicorn root.wsgi --log-file -

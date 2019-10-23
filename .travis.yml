@@ -12,7 +12,6 @@ matrix:
         - ./manage.py makemigrations && ./manage.py migrate
       script:
         - python manage.py test
-        - python manage.py runserver
 
     - language: node_js
       node_js:

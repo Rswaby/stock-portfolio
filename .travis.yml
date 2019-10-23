@@ -11,7 +11,7 @@ matrix:
         - rm -f */migrations/0*.py 2> /dev/null
         - ./manage.py makemigrations && ./manage.py migrate
       script:
-        - coverage run --source='.' manage.py test --noinput && cd ..
+        - python manage.py test
 
     - language: node_js
       node_js:
@@ -21,12 +21,7 @@ matrix:
         - rm -rf node_modules && rm -f package-lock.json
         - npm install
       script:
-        - npm test
         - CI=false && npm run build
-      before_deploy:
-        - mv build/static/* ../backend/static/
-        - cp -r build/* ../backend/templates/
-        - cd ../backend
       deploy:
         provider: heroku
         api_key: $HEROKU_API_KEY

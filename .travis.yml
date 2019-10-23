@@ -15,7 +15,7 @@ matrix:
 
     - language: node_js
       node_js:
-        - "stable"
+        - "8"
       before_script:
         - cd frontend
         - npm install

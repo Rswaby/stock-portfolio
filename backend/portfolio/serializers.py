@@ -14,14 +14,18 @@ class StockSerializer(serializers.ModelSerializer):
             '_low',
             '_close'
         ]
+
+
 class StockUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = StockUser
         fields = [
-            'userID', 
-            'userName', 
+            'userID',
+            'userName',
             'bank'
         ]
+
+
 class TransactionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transactions

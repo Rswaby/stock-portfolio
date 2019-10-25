@@ -41,10 +41,10 @@ class Search extends Component {
 
   render() {
     console.log(this.state)
-    const {isloading,loaded,data} = this.state;
-    const renderCards =() => (
+    const { isloading, loaded, data } = this.state;
+    const renderCards = () => (
       loaded && data.map((ticker, index) =>
-      <StockCard key={index} data={ticker} />)
+        <StockCard key={index} data={ticker} />)
     )
     return (
       <div className={"searchPage m-top-5"}>
@@ -58,7 +58,7 @@ class Search extends Component {
           />
         </form>
         <div className={"card-result-area"}>
-          {isloading? <div className={"lds-circle centr"}><div></div></div> : renderCards()}
+          {isloading ? <div className={"lds-circle centr"}><div></div></div> : renderCards()}
         </div>
       </div>
     )

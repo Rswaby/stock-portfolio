@@ -8,10 +8,12 @@ from celery import task
 logger = get_task_logger(__name__)
 # @periodic_task(
 #     run_every=(crontab(minute='*')), #run task every m
-#     name="some_task", 
+#     name="some_task",
 #     ignore_result=True
 #     )
-#@periodic_task(run_every=datetime.timedelta(seconds=30))
+# @periodic_task(run_every=datetime.timedelta(seconds=30))
+
+
 @task()
 def some_task():
     # do something

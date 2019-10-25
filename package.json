@@ -14,16 +14,13 @@
     "react-sticky-footer": "0.1.0-rc3",
     "recompose": "^0.30.0"
   },
-
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom --passWithNoTests",
     "eject": "react-scripts eject"
   },
-
   "proxy": "http://localhost:8000",
-
   "browserslist": [
     ">0.2%",
     "not dead",

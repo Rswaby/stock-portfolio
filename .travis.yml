@@ -5,19 +5,18 @@ matrix:
       cache:
         pip: true
       install:
-        - pip install -r backend/requirements.txt
-      before_script:
-        - cd backend
-        - rm -f */migrations/0*.py 2> /dev/null
-        - ./manage.py makemigrations && ./manage.py migrate
-      script:
-        - python manage.py test
+        - pip install -r requirements.txt
+      # before_script:
+        # - cd backend
+        # - rm -f */migrations/0*.py 2> /dev/null
+        # - ./manage.py makemigrations && ./manage.py migrate
+      # script:
+        # - python manage.py test
 
     - language: node_js
       node_js:
         - "8"
       before_script:
-        - cd frontend
         - npm install
       script:
         - npm test

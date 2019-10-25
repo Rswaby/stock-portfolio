@@ -1,5 +1,6 @@
 from django.test import TestCase
-from portfolio.models import *
+from backend.portfolio.models import *
+
 # Create your tests here.
 import datetime
 

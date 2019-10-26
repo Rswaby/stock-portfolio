@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: web: bin/boot
+web: gunicorn backend.wsgi --log--

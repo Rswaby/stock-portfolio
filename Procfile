@@ -1,2 +1,2 @@
-release: python manage.py migrate && python manage.py runserver 8000
-web: npm start
+release: python manage.py migrate
+web: web: bin/boot

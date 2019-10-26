@@ -1,2 +1,2 @@
-release: python manage.py migrate
-web: gunicorn backend.wsgi --log-file -
+release: python manage.py migrate && python manage runserver 8000
+web: npm start

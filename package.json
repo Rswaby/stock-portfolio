@@ -14,6 +14,9 @@
     "react-sticky-footer": "0.1.0-rc3",
     "recompose": "^0.30.0"
   },
+  "engines": {
+    "node": "8.11.4"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

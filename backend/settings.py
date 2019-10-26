@@ -26,7 +26,7 @@ SECRET_KEY = '#c_ne5$$)u9(4@wky=c3tdiz=b562ji^l4u!#6tm3s^u9%6*7x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['stock-portfolio-rohan.herokuapp.com','127.0.0.1:8000']
 
 
 # Application definition
@@ -135,7 +135,7 @@ if "TRAVIS" not in os.environ:
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 STATIC_URL = '/static/'
 #Place static in the same location as webpack build files
-STATIC_ROOT = os.path.join(BASE_DIR, 'build', 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = []
 
 # If you want to serve user uploaded files add these settings

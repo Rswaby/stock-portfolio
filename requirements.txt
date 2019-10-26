@@ -1,8 +1,13 @@
-django
+
 djangorestframework
 celery==3.1.18
 redis==2.10.3
 alpha-vantage
-gunicorn
+
 django-heroku
-whitenoise
+
+
+
+django>=2.1.2
+gunicorn==19.7.1
+whitenoise==3.3.1

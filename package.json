@@ -24,6 +24,7 @@
     "eject": "react-scripts eject"
   },
   "proxy": "https://stock-portfolio-rohan.herokuapp.com",
+  
   "browserslist": [
     ">0.2%",
     "not dead",

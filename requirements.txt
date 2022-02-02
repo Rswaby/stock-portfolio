@@ -1,13 +1,11 @@
 
+django
 djangorestframework
 celery==5.2.2
 redis==2.10.3
 alpha-vantage
-
+psycopg2-binary>=2.9.3
 django-heroku
 
-
-
-django>=2.1.2
 gunicorn==19.7.1
 whitenoise==3.3.1

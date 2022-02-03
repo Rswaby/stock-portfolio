@@ -4,7 +4,6 @@ from .models import *
 from django.shortcuts import get_object_or_404
 from .serializers import *
 from rest_framework import viewsets, response, status
-from .utils import server_socket
 from alpha_vantage.timeseries import TimeSeries
 
 

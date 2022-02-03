@@ -7,6 +7,6 @@ djangorestframework
 gunicorn==19.7.1
 psycopg2-binary>=2.9.3
 pyyaml
-rest_framework_swagger
+django-rest-swagger
 redis==2.10.3
 whitenoise==3.3.1

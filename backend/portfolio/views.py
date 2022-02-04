@@ -1,10 +1,9 @@
-from django.shortcuts import render
 from .models import *
-# Create your views here.
 from django.shortcuts import get_object_or_404
 from .serializers import *
 from rest_framework import viewsets, response, status
 from alpha_vantage.timeseries import TimeSeries
+from django.conf import settings
 
 
 class UserViewSet(viewsets.ViewSet):
@@ -117,13 +116,13 @@ class LiveStocksViewSet(viewsets.ViewSet):
     def retrieve(self, request, symbol=None):
         # search_symbol
         # reimplement  https://www.alphavantage.co/documentation/#symbolsearch
-        ts = TimeSeries(key='1CUKM2S9MK37DA21', output_format='json')
+        ts = TimeSeries(key=settings.API_KEY, output_format='json')
         data, meta_data = ts.get_symbol_search(symbol)
         print(meta_data)
         return response.Response(data)
 
     def retrieve_symbol_details(self, request, symbol=None):
-        ts = TimeSeries(key='1CUKM2S9MK37DA21', output_format='json')
+        ts = TimeSeries(key=settings.API_KEY, output_format='json')
         data, meta_data = ts.get_intraday(symbol=symbol)
         last_refreshed = meta_data['3. Last Refreshed']
         data = data[last_refreshed]

@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 from .serializers import *
 from rest_framework import viewsets, response, status
 from alpha_vantage.timeseries import TimeSeries
+from .utils.rest_api import AlphaApi
 from django.conf import settings
 
 
@@ -115,19 +116,18 @@ class LiveStocksViewSet(viewsets.ViewSet):
 
     def retrieve(self, request, symbol=None):
         # search_symbol
-        # reimplement  https://www.alphavantage.co/documentation/#symbolsearch
-        ts = TimeSeries(key=settings.API_KEY, output_format='json')
-        data, meta_data = ts.get_symbol_search(symbol)
-        print(meta_data)
-        return response.Response(data)
+        data = AlphaApi.search_symbol(symbol)
+        print(data)
+        return response.Response(data["bestMatches"])
 
     def retrieve_symbol_details(self, request, symbol=None):
-        ts = TimeSeries(key=settings.API_KEY, output_format='json')
-        data, meta_data = ts.get_intraday(symbol=symbol)
-        last_refreshed = meta_data['3. Last Refreshed']
-        data = data[last_refreshed]
+        res = AlphaApi.get_intra_day(symbol)
+        meta_data =  res["Meta Data"]
+        last_refreshed = meta_data["3. Last Refreshed"]
+        interval = meta_data["4. Interval"]
+        data = res[f'Time Series ({interval})']
         result = {}
-        result['data'] = data
+        result['data'] = data[last_refreshed]
         result['meta_data'] = meta_data
 
         return response.Response(result)

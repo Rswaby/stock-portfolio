@@ -9,7 +9,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
-.Python
+#.Python
 env/
 develop-eggs/
 downloads/
@@ -71,7 +71,7 @@ target/
 .ipynb_checkpoints
 
 # pyenv
-.python-version
+#.python-version
 
 # celery beat schedule file
 celerybeat-schedule
